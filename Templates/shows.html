@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="../../Assets/Styles/stylesheet.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">        
+		<title>Shows List</title>
+	</head>
+
+	<body>
+		{{ include("header.html") }}
+
+        <div id="main-container" class="container-fluid section-1">
+            <h1 class="text-center sub-header">Top Rated Shows</h1>
+
+            <div class="row container-fluid justify-content-center" id="top-rated-container">
+            </div>
+
+            <h1 class="text-center sub-header">Popular Shows</h1>
+
+            <div class="row container-fluid justify-content-center" id="popular-container">
+            </div>
+
+            <h1 class="text-center sub-header">Trending Shows</h1>
+
+            <div class="row container-fluid justify-content-center" id="trending-container">
+
+            </div>
+	    </div>
+
+        {{ include("footer.html") }}
+
+
+        <script>
+            $(document).ready(function () 
+            {
+                const options = {
+                    method: 'GET',
+                    headers: {
+                    accept: 'application/json',
+                    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhMTU0NDRiNjZmZTIzNTc2MTkwYjZjOWZmZDk0ZDlhYiIsInN1YiI6IjY1NGJhMTJmNTMyYWNiNTMzNTNmOTFkYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.XH79kRz_-_D_pUACtDyeCK1HOtqFPQlia-YQ0t8THSw'
+                    }
+                };
+
+                //async functions used to fetch data from the api
+                async function fetchTopRated()
+                {
+                    try
+                    {
+                        const response = await fetch('https://api.themoviedb.org/3/tv/top_rated?language=en-US&page=1', options);
+                        const data = await response.json();
+
+                        const responseData = data;
+                        return responseData;
+                    }
+                    catch(error)
+                    {
+                        console.log(error);
+                    }
+                }
+
+                async function fetchPopular()
+                {
+                    try
+                    {
+                        const response = await fetch('https://api.themoviedb.org/3/tv/popular?language=en-US&page=1', options);
+                        const data = await response.json();
+
+                        const responseData = data;
+                        return responseData;
+                    }
+                    catch(error)
+                    {
+                        console.log(error);
+                    }
+                }
+
+                async function fetchTrending()
+                {
+                    try
+                    {
+                        const response = await fetch('https://api.themoviedb.org/3/trending/tv/week?language=en-US', options);
+                        const data = await response.json();
+
+                        const responseData = data;
+                        return responseData;
+                    }
+                    catch(error)
+                    {
+                        console.log(error);
+                    }
+                }
+
+                //once objects are fetched, format them using bootstrap 5.3 cards to display them 
+                fetchTopRated().then(result=> {
+                    console.log(result);
+                    for(let i = 0; i < 9; i++)
+                    {
+                        $("#top-rated-container").append('<div class="col-sm-3 justify-content-center text-center movie-card card"><img style="width: 12rem;" class="card-img-top img-fluid rounded mx-auto d-block" src="https://image.tmdb.org/t/p/original/' + result.results[i].poster_path + '" alt="poster"><div class="card-body"><h5 class="card-title">' + result.results[i].name + '</h5><ul class="list-group list-group-flush"><li class="list-group-item">First Aired: ' + result.results[i].first_air_date + '</li><li class="list-group-item">Rating:' + result.results[i].vote_average + '</li><li class="list-group-item"><a href="https://www.themoviedb.org/tv/' + result.results[i].id + '">Read more</a></li></ul></div>');
+                    }
+                });
+
+                fetchPopular().then(result=> {
+                    console.log(result);
+                    for(let i = 0; i < 9; i++)
+                    {
+                        $("#popular-container").append('<div class="col-sm-3 justify-content-center text-center movie-card card"><img style="width: 12rem;" class="card-img-top img-fluid rounded mx-auto d-block" src="https://image.tmdb.org/t/p/original/' + result.results[i].poster_path + '" alt="poster"><div class="card-body"><h5 class="card-title">' + result.results[i].name + '</h5><ul class="list-group list-group-flush"><li class="list-group-item">First Aired: ' + result.results[i].first_air_date + '</li><li class="list-group-item">Rating:' + result.results[i].vote_average + '</li><li class="list-group-item"><a href="https://www.themoviedb.org/tv/' + result.results[i].id + '">Read more</a></li></ul></div>');
+                    }
+                });
+
+                fetchTrending().then(result=> {
+                    console.log(result);
+                    for(let i = 0; i < 9; i++)
+                    {
+                        $("#trending-container").append('<div class="col-sm-3 justify-content-center text-center movie-card card"><img style="width: 12rem;" class="card-img-top img-fluid rounded mx-auto d-block" src="https://image.tmdb.org/t/p/original/' + result.results[i].poster_path + '" alt="poster"><div class="card-body"><h5 class="card-title">' + result.results[i].name + '</h5><ul class="list-group list-group-flush"><li class="list-group-item">First Aired: ' + result.results[i].first_air_date + '</li><li class="list-group-item">Rating:' + result.results[i].vote_average + '</li><li class="list-group-item"><a href="https://www.themoviedb.org/tv/' + result.results[i].id + '">Read more</a></li></ul></div>');
+                    }
+                })
+            });
+        </script>
+	</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+  		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="../../Assets/Styles/stylesheet.css">
+		<script src="../../Scripts/JS/functions.js"></script>
+		<title>Movie Website</title>
+	</head>
+
+	{{ include ("header.html") }}
+
+	<body>
+		<div class="container-fluid text-center light">
+			<h1>Welcome to <small class="text-body-secondary">FilmFusion</small>.</h1>
+			<i class="bi bi-film logo text-center"></i>
+		</div>
+
+		<div class="container-fluid text-center dark">
+			<h1 class="margin">What We Offer</h1>
+			<div class="carousel slide" data-bs-ride="carousel">
+				<div class="carousel-inner text-center">
+					<div class="carousel-item active" data-bs-interval="2500">
+						<i class="bi bi-search logo-med"></i>
+						<h2>Search for Movies</h2>
+						<p class="lead">Powered by 2 Api's, search for your favourite movies in the blink of an eye.</p>
+					</div>
+					<div class="carousel-item text-center" data-bs-interval="2500">
+						<i class="bi bi-card-list logo-med"></i>
+						<h2>Browse Shows</h2>
+						<p class="lead">Using OMDb and TMDB, browsing for shows has never been easier.</p>
+					</div>
+					<div class="carousel-item text-center" data-bs-interval="2500">
+						<i class="bi bi-pencil-square logo-med"></i>
+						<h2>Leave Your Thoughts</h2>
+						<p class="lead">Whether if it's a movie or a show, your opinion can be heard.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="container-fluid text-center light">
+			<h1 class="margin">What our Users Say</h1>
+			<div class="row">
+				<div class="col-sm">
+					<i onclick="showUser('1')" class="bi bi-person-circle logo-med"></i>
+				</div>
+
+				<div class="col-sm">
+					<i onclick="showUser('2')" class="bi bi-person-circle logo-med"></i>
+				</div>
+
+				<div class="col-sm">
+					<i onclick="showUser('3')" class="bi bi-person-circle logo-med"></i>
+				</div>
+			</div>
+			
+
+			<div id="text-container" class="text-center"></div>
+		</div>
+
+		{{ include("footer.html") }}
+	</body>
+</html>

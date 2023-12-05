@@ -1,0 +1,186 @@
+@import url('https://fonts.googleapis.com/css2?family=Rowdies:wght@300&display=swap');
+body
+{
+	line-height: 1.5;
+	background-color: #FFFFFF;
+	font-family: 'Rowdies', sans-serif !important;
+
+}
+
+.container-fluid
+{
+	padding-top: 75px;
+	padding-bottom: 75px;
+}
+
+.filmfusion-logo
+{
+	width: 60px;
+}
+
+nav, footer
+{
+	background-color: #10171D;
+	color: #FFFFFF !important;
+}
+
+a
+{
+	color: #FFFFFF !important;
+}
+
+.list-group-item a
+{
+	color: #10171D !important;
+}
+
+.dark
+{
+	background-color: #1D1D1F;
+	color: #FFFFFF;
+}
+
+.light
+{
+	background-color: #FAFAFA;
+	color: #1D1D1F;
+}
+
+h2, .sub-header
+{
+	margin-top: 2%;
+	margin-bottom: 3%;
+}
+
+.margin
+{
+	margin-bottom: 45px;
+}
+
+.nav-logo
+{
+	font-size: 80px;
+}
+
+.logo
+{
+	font-size: 250px;
+}
+
+.logo-med
+{
+	font-size: 75px;
+}
+
+.item
+{
+	margin: 70px 0;
+}
+
+.input-form
+{
+	width: 80%;
+	margin-left: 10% !important;
+}
+
+.rating
+{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	grid-gap: 0.5rem;
+	font-size: 40px;
+	color: black;
+}
+
+.input-container
+{
+	display: flex !important;
+	justify-content: center;
+	color: black;
+}
+
+.rating .star, .logo-med
+{
+	cursor: pointer;
+}
+
+.rating .star.active {
+	opacity: 0;
+	animation: animate .5s calc(var(--i) * .1s) ease-in-out forwards;
+}
+
+@keyframes animate {
+	0% {
+		opacity: 0;
+		transform: scale(1);
+	}
+	50% {
+		opacity: 1;
+		transform: scale(1.2);
+	}
+	100% {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+.rating .star:hover, .glyphicon-user:hover {
+	transform: scale(1.1);
+}
+
+.signature
+{
+	font-size: 18px;
+	color: gray;
+	font-style: italic;
+}
+
+.help-block
+{
+	color: red;
+	margin-left: 1%;
+	font-style: italic;
+}
+
+.review-cards
+{
+	width: 80%;
+	margin-bottom: 50px;
+}
+
+.movie-card
+{
+	margin: 1%;
+}
+
+.form-group
+{
+	margin-bottom:25px;
+}
+
+.card-img-top
+{
+	padding: 1%;
+}
+
+.footer-icon
+{
+	padding: 1%;
+	font-size: 35px;
+}
+
+.modal-title
+{
+	background-color: none;
+}
+
+@media only screen and (max-width: 991px)
+{
+	.navbar-nav li
+	{
+		text-align: center;
+	}
+}
+
+
