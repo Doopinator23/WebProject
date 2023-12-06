@@ -1,27 +1,3 @@
-//Function is used in INDEX page, gets details from database and displays them using AJAX, depending which option is selected.
-function showUser(str)
-{
-	var xhttp;
-	if (str == "")
-	{
-		document.getElementById("text-container").innerHTML = "";
-		return;
-	}
-
-	xhttp = new XMLHttpRequest();
-	xhttp.onreadystatechange = function()
-	{
-		if (this.readyState == 4 && this.status == 200)
-		{
-			document.getElementById("text-container").innerHTML = this.responseText;
-		}
-	};
-
-	xhttp.open("GET", "get-user.php?q=" + str, true);
-	xhttp.send();
-	
-}
-
 //function is used to gather data from the sign up form, validate it, and insert the data in to javascript.
 $(document).ready(function(){
 	$("#sign-up-form").submit(function(event) 
